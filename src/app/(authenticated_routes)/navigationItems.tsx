@@ -4,9 +4,11 @@ import {FC, useCallback} from 'react'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
+import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import SettingsIcon from '@mui/icons-material/Settings'
 import {useRouter} from 'next/navigation'
+import Link from "next/link";
 
 export const SidebarItems: FC = () => {
   const router = useRouter()
@@ -14,6 +16,8 @@ export const SidebarItems: FC = () => {
   const handleSnippetsClick = useCallback(() => router.push('/snippets'), [router])
 
   const handleSettingsClick = useCallback(() => router.push('/settings'), [router])
+
+  const handleLogout = useCallback(() => router.push('/api/auth/logout'), [router])
 
   return (
     <>
@@ -28,6 +32,12 @@ export const SidebarItems: FC = () => {
           <SettingsIcon/>
         </ListItemIcon>
         <ListItemText primary="Settings"/>
+      </ListItemButton>
+      <ListItemButton onClick={handleLogout}>
+          <ListItemIcon>
+              <LogoutIcon/>
+          </ListItemIcon>
+          <ListItemText primary="Logout"/>
       </ListItemButton>
     </>
   )

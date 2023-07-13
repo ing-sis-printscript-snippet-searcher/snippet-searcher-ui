@@ -20,7 +20,8 @@ const CreateSnippetPage: FC<CreateSnippetPageProps> = ({params}) => {
   const router = useRouter()
 
   const {snippetOperations} = useOperations()
-  const {data: snippet, isFetching} = useQuery(['snippets', 'full', id], () => snippetOperations.getSnippetById(id))
+  const {data, isFetching} = useQuery(['snippets', 'full', id], () => snippetOperations.getSnippetById(id))
+  const snippet = data?.data
 
   const handleGoToEdit = useCallback(() => {
     router.push(`/snippets/edit/${id}`)
@@ -44,7 +45,7 @@ const CreateSnippetPage: FC<CreateSnippetPageProps> = ({params}) => {
           <>
             <Grid item xs={12}>
               <CodeMirror
-                value={snippet.content}
+                value={snippet.code}
                 height="500px"
                 width="100%"
                 extensions={[javascript({typescript: true, jsx: false})]}

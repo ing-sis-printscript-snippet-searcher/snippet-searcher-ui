@@ -1,11 +1,12 @@
-import {CreateSnippet, Snippet, SnippetDescriptor, UpdateSnippet} from '@/data/snippet'
+import {CreateSnippet, UpdateSnippet} from '@/data/snippet'
+import {Snippet, SnippetResponse} from "@/util/types";
 
 export interface SnippetOperations {
-  listSnippetDescriptors(): Promise<SnippetDescriptor[]>
+  listSnippetDescriptors(): Promise<SnippetResponse<Snippet[]>>
 
-  createSnippet(createSnippet: CreateSnippet): Promise<SnippetDescriptor>
+  createSnippet(createSnippet: CreateSnippet): Promise<SnippetResponse<Snippet>>
 
-  getSnippetById(id: string): Promise<Snippet | undefined>
+  getSnippetById(id: string): Promise<SnippetResponse<Snippet> | undefined>
 
-  updateSnippetById(id: string, updateSnippet: UpdateSnippet): Promise<SnippetDescriptor>
+  updateSnippetById(id: string, updateSnippet: UpdateSnippet): Promise<SnippetResponse<Snippet>>
 }

@@ -4,7 +4,7 @@ import React, {FC, useCallback} from 'react'
 import {useOperations} from '@/data/operationsContext'
 import {useMutation, useQuery} from '@tanstack/react-query'
 import {CircularProgress, Grid, Paper, Typography} from '@mui/material'
-import {EditSnippetForm} from '@/app/snippets/edit/[id]/editSnippetForm'
+import {EditSnippetForm} from '@/app/(authenticated_routes)/snippets/edit/[id]/editSnippetForm'
 import {UpdateSnippet} from '@/data/snippet'
 import {useRouter} from 'next/navigation'
 
@@ -20,7 +20,8 @@ const CreateSnippetPage: FC<CreateSnippetPageProps> = ({params}) => {
   const router = useRouter()
 
   const {snippetOperations} = useOperations()
-  const {data: snippet, isFetching} = useQuery(['snippets', 'full', id], () => snippetOperations.getSnippetById(id))
+  const {data, isFetching} = useQuery(['snippets', 'full', id], () => snippetOperations.getSnippetById(id))
+  const snippet = data?.data
   const {
     mutate,
     isLoading
