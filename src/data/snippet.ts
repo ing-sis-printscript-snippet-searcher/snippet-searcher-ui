@@ -22,6 +22,7 @@ export type Snippet = z.infer<typeof SnippetSchema>
 export const CreateSnippetSchema = z.object({
   name: z.string(),
   type: SnippetTypeSchema,
+  compliance: z.string(),
   code: z.string()
 })
 export type CreateSnippet = z.infer<typeof CreateSnippetSchema>
