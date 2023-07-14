@@ -38,7 +38,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: ing-sis-printscript-snippet-searcher
           password: ${{ secrets.TOKEN }}
 
       - name: Build and push Docker image
@@ -46,5 +46,5 @@ jobs:
           GITHUB_ACTOR: ${{ github.repository_owner }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
-          docker build -t ghcr.io/${{ env.OWNER_LC }}/snippets-searcher-ui-prod:0.0.1 .
-          docker push ghcr.io/${{ env.OWNER_LC }}/snippets-searcher-ui-prod:0.0.1
+          docker build -t ghcr.io/ing-sis-printscript-snippet-searcher/snippets-searcher-ui-prod:0.0.1 .
+          docker push ghcr.io/ing-sis-printscript-snippet-searcher/snippets-searcher-ui-prod:0.0.1
