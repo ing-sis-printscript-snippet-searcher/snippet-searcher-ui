@@ -38,7 +38,7 @@ export class RealSnippetOperations implements SnippetOperations {
     id: string,
     updateSnippet: UpdateSnippet
   ): Promise<SnippetResponse<Snippet>> {
-    return axios.put("/api/snippets/" + id, updateSnippet.content, {
+    return axios.put("/api/snippets/" + id, updateSnippet, {
       headers: this.headers,
     });
   }
