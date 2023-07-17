@@ -45,7 +45,7 @@ const CreateSnippetPage: FC<CreateSnippetPageProps> = ({params}) => {
           <>
             <Grid item xs={12}>
               <CodeMirror
-                value={snippet.code}
+                value={snippet.content}
                 height="500px"
                 width="100%"
                 extensions={[javascript({typescript: true, jsx: false})]}

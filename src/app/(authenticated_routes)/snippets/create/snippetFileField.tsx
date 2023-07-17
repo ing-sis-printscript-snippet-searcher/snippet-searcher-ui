@@ -8,15 +8,15 @@ export const SnippetFileField: FC = () => {
 
   const {errors} = useFormState<CreateSnippet>()
 
-  const codeErrors = useMemo(() => errors['code'], [errors])
+  const contentErrors = useMemo(() => errors['content'], [errors])
 
-  const {name, required} = register('code')
+  const {name, required} = register('content')
 
   const handleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files![0]
-    file.text().then(code => {
-      clearErrors('code')
-      setValue('code', code)
+    file.text().then(content => {
+      clearErrors('content')
+      setValue('content', content)
     })
   }, [clearErrors, setValue])
 
@@ -26,8 +26,8 @@ export const SnippetFileField: FC = () => {
       required={required}
       onChange={handleChange}
 
-      error={codeErrors !== undefined}
-      helperText={codeErrors?.message}
+      error={contentErrors !== undefined}
+      helperText={contentErrors?.message}
 
       type="file"
       label="File"

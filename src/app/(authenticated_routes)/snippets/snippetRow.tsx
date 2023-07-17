@@ -31,7 +31,7 @@ export const SnippetRow: FC<SnippetRowType> = ({ snippet }) => {
   return (
     <TableRow key={snippet.id}>
       <TableCell>{snippet.name}</TableCell>
-      <TableCell>{snippet.role}</TableCell>
+      <TableCell>{snippet.compliance}</TableCell>
       <TableCell>{code}</TableCell>
       <TableCell>
         <IconButton title="View snippet" onClick={handleView}>
