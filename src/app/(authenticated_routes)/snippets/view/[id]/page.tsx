@@ -29,7 +29,7 @@ const CreateSnippetPage: FC<CreateSnippetPageProps> = ({params}) => {
 
   const handleGoToSnippets = useCallback(() => {
     router.push(`/snippets`)
-  }, [id, router])
+  }, [router])
 
   return (
     <Paper variant="outlined" sx={{my: {xs: 3, md: 6}, p: {xs: 2, md: 3}}}>
