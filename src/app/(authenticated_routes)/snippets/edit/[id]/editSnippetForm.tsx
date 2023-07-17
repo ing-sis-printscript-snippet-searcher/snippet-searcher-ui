@@ -32,15 +32,18 @@ export const EditSnippetForm: FC<CreateSnippetFormProps> = ({
         <Grid item xs={12}>
           <Controller
             name="code"
-            render={({ field }) => (
-              <CodeMirror
-                value={field.value}
-                onChange={field.onChange}
-                height="500px"
-                width="100%"
-                extensions={[javascript({ typescript: true, jsx: false })]}
-              />
-            )}
+            render={({ field }) => {
+              console.log(field);
+              return (
+                <CodeMirror
+                  value={field.value}
+                  onChange={field.onChange}
+                  height="500px"
+                  width="100%"
+                  extensions={[javascript({ typescript: true, jsx: false })]}
+                />
+              );
+            }}
           />
         </Grid>
       </Grid>

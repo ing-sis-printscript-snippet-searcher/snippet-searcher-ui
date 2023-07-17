@@ -29,8 +29,8 @@ export const SnippetTable: FC = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>Name</TableCell>
-                  <TableCell>Type</TableCell>
-                  <TableCell>Conformance</TableCell>
+                  <TableCell>Compliance</TableCell>
+                  <TableCell>Content</TableCell>
                   <TableCell>Actions</TableCell>
                 </TableRow>
               </TableHead>
