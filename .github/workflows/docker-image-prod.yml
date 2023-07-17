@@ -48,3 +48,25 @@ jobs:
         run: |
           docker build -t ghcr.io/ing-sis-printscript-snippet-searcher/snippets-searcher-ui-prod:0.0.1 .
           docker push ghcr.io/ing-sis-printscript-snippet-searcher/snippets-searcher-ui-prod:0.0.1
+          
+          
+  run_remote_script:
+    name: Run remote script
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_PRIVATE_KEY" > ../private.key
+          chmod 600 ../private.key
+          ssh-keyscan ${{secrets.SSH_HOST}} >> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+
+      - name: Run script on remote machine
+        run: |
+          ssh -v -i ../private.key azureuser@${{secrets.SSH_HOST}} "~/deploy.sh"
