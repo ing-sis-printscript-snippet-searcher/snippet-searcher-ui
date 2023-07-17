@@ -83,8 +83,8 @@ export const CreateSnippetForm: FC<CreateSnippetFormProps> = ({
           <SelectElement
             fullWidth
             id="snippet-compliance"
-            name="status"
-            label="Status"
+            name="compliance"
+            label="Compliance"
             defaultValue="pending"
             variant="outlined"
             options={STATUS_OPTIONS}
