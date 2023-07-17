@@ -1,11 +1,11 @@
 // api/auth/callback.ts
-import {handleCallback, Session} from "@auth0/nextjs-auth0";
+import { handleCallback, Session } from "@auth0/nextjs-auth0";
 import { NextApiRequest, NextApiResponse } from "next";
-import {setCookie} from "cookies-next";
+import { setCookie } from "cookies-next";
 
 const callbackHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    await handleCallback(req, res, {afterCallback});
+    await handleCallback(req, res, { afterCallback });
   } catch (error) {
     // @ts-ignore
     res.status(error.status || 400).end(error.message);
@@ -14,8 +14,12 @@ const callbackHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 export default callbackHandler;
 
-
-const afterCallback = (req: NextApiRequest, res: NextApiResponse,session: Session) => {
-  setCookie("token", session.idToken, {req, res, maxAge: 60 * 60 * 24});
-  return session
+const afterCallback = (
+  req: NextApiRequest,
+  res: NextApiResponse,
+  session: Session
+) => {
+  console.log("session", session);
+  setCookie("token", session.accessToken, { req, res, maxAge: 60 * 60 * 24 });
+  return session;
 };

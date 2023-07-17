@@ -29,7 +29,7 @@ const CreateSnippetPage: FC<CreateSnippetPageProps> = ({params}) => {
 
   const handleGoToSnippets = useCallback(() => {
     router.push(`/snippets`)
-  }, [id, router])
+  }, [router])
 
   return (
     <Paper variant="outlined" sx={{my: {xs: 3, md: 6}, p: {xs: 2, md: 3}}}>
@@ -45,7 +45,7 @@ const CreateSnippetPage: FC<CreateSnippetPageProps> = ({params}) => {
           <>
             <Grid item xs={12}>
               <CodeMirror
-                value={snippet.code}
+                value={snippet.content}
                 height="500px"
                 width="100%"
                 extensions={[javascript({typescript: true, jsx: false})]}
